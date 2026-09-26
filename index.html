@@ -1,0 +1,553 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ACI EduTech Crunch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #F5F8F6;
+    --surface:   #FFFFFF;
+    --card:      #FFFFFF;
+    --card-hover:#F0F6F3;
+    --border:    rgba(20,45,40,0.09);
+    --accent:    #4C9A8B;
+    --accent2:   #7FC1AE;
+    --accent3:   #DE8F73;
+    --accent3-s: rgba(222,143,115,0.14);
+    --text:      #172623;
+    --muted:     #5C716D;
+    --success:   #4C9A8B;
+    --header-bg: rgba(245,248,246,0.86);
+  }
+
+  html[data-theme="dark"] {
+    --bg:        #0E1716;
+    --surface:   #14201E;
+    --card:      #182523;
+    --card-hover:#1E2E2B;
+    --border:    rgba(255,255,255,0.08);
+    --accent:    #5FBBA9;
+    --accent2:   #8FD6C4;
+    --accent3:   #E5A186;
+    --accent3-s: rgba(229,161,134,0.14);
+    --text:      #E9F3F0;
+    --muted:     #92ABA5;
+    --success:   #5FBBA9;
+    --header-bg: rgba(14,23,22,0.86);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+      --bg:        #0E1716;
+      --surface:   #14201E;
+      --card:      #182523;
+      --card-hover:#1E2E2B;
+      --border:    rgba(255,255,255,0.08);
+      --accent:    #5FBBA9;
+      --accent2:   #8FD6C4;
+      --accent3:   #E5A186;
+      --accent3-s: rgba(229,161,134,0.14);
+      --text:      #E9F3F0;
+      --muted:     #92ABA5;
+      --success:   #5FBBA9;
+      --header-bg: rgba(14,23,22,0.86);
+    }
+  }
+
+  html, body { transition: background 0.25s ease, color 0.25s ease; }
+  body * { transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    line-height: 1.65;
+  }
+
+  a { color: inherit; }
+
+  /* ── Header ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 1.5rem;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .logo-icon svg { width: 16px; height: 16px; }
+
+  /* ── Theme toggle ── */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 4px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .theme-toggle-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: 22px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--muted);
+    transition: background 0.2s, color 0.2s;
+  }
+  .theme-toggle-option svg { width: 13px; height: 13px; }
+  .theme-toggle-option.active { background: var(--accent); color: #fff; }
+
+  /* ── Hero / masthead ── */
+  .hero {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 3rem;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.3rem;
+    color: var(--text);
+  }
+  .hero h1 em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.75;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* ── Section ── */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+  .section-label {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding: 0.85rem 1.15rem;
+    border-radius: 14px;
+    background: linear-gradient(90deg, rgba(76,154,139,0.14), rgba(127,193,174,0.07));
+    border: 1px solid rgba(76,154,139,0.3);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label .spark svg { width: 19px; height: 19px; vertical-align: -4px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.3rem;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(20,50,45,0.14);
+  }
+  .card:hover::before { opacity: 1; }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .card-icon {
+    width: 42px; height: 42px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .card-icon svg { width: 21px; height: 21px; }
+
+  .card-badge {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .badge-live {
+    color: var(--success);
+    border-color: rgba(76,154,139,0.3);
+    background: rgba(76,154,139,0.09);
+  }
+  .badge-new {
+    color: var(--accent3);
+    border-color: rgba(222,143,115,0.35);
+    background: var(--accent3-s);
+  }
+  .card.card-new::before { background: linear-gradient(90deg, var(--accent3), #F0B49B); }
+  .card.card-new:hover { border-color: var(--accent3); }
+
+  .pulse {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(76,154,139,0.4); }
+    50%      { opacity: 0.6; box-shadow: 0 0 0 5px rgba(76,154,139,0); }
+  }
+
+  .card-body h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .card-body p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(76,154,139,0.09);
+    color: var(--accent);
+    border: 1px solid rgba(76,154,139,0.2);
+  }
+  .card-new .tag {
+    background: var(--accent3-s);
+    color: var(--accent3);
+    border-color: rgba(222,143,115,0.3);
+  }
+
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  .card-footer > span:first-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-footer-action {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+  .card-new .card-footer-action { color: var(--accent3); }
+  .card-footer-action svg { width: 13px; height: 13px; }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.2rem 1.5rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  footer strong { color: var(--text); }
+
+  /* ── Floating sign-up ── */
+  .jump-cta {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    z-index: 300;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.86rem;
+    padding: 13px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(76,154,139,0.4);
+    animation: jump-bounce 2.4s ease-in-out infinite;
+  }
+  .jump-cta .jc-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    flex-shrink: 0;
+    animation: jump-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes jump-bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-9px); }
+  }
+  @keyframes jump-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .jump-cta, .jump-cta .jc-dot { animation: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 2.75rem 1.25rem 2rem; }
+    .section { padding: 0 1.25rem 4rem; }
+    .jump-cta { right: 14px; bottom: 16px; padding: 11px 16px; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#top">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/>
+        </svg>
+      </div>
+      ACI EduTech Crunch
+    </a>
+    <div class="theme-toggle" id="theme-toggle">
+      <span class="theme-toggle-option" id="theme-dark-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        Dark
+      </span>
+      <span class="theme-toggle-option" id="theme-light-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        Light
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">Team Learning Digest</div>
+  <h1>What's worth <em>your time</em><br />this month</h1>
+  <p>A running round-up of what's live for the team right now, from AI in action to Notion fundamentals and the newest ways to connect the two.</p>
+</section>
+
+<!-- ── Featured section ── -->
+<section class="section">
+  <div class="section-label">
+    <span class="spark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="url(#sparkGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4C9A8B"/><stop offset="100%" stop-color="#7FC1AE"/></linearGradient></defs>
+        <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/>
+      </svg>
+    </span>
+    Upcoming AI &amp; Other Trainings for Team!
+  </div>
+
+  <div class="grid">
+
+    <!-- Card: Notion & AI Trainings -->
+    <a class="card" href="https://aci-edulink.github.io/Notion-AI-Trainings/" target="_blank" rel="noopener">
+      <div class="card-head">
+        <div class="card-icon" style="background:rgba(76,154,139,0.12);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4C9A8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="card-badge badge-live"><span class="pulse"></span> Live</div>
+      </div>
+      <div class="card-body">
+        <h2>Notion &amp; AI Trainings</h2>
+        <p>Learning resources and training materials to help the team get up to speed on Notion and AI tools.</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">Training</span>
+        <span class="tag">Notion</span>
+        <span class="tag">AI</span>
+      </div>
+      <div class="card-footer">
+        <span>aci-edulink.github.io</span>
+        <span class="card-footer-action">
+          Read the guide
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Card 3: new -->
+    <a class="card card-new" href="https://aci-edulink.github.io/connecting-notion-mcp/" target="_blank" rel="noopener">
+      <div class="card-head">
+        <div class="card-icon" style="background:var(--accent3-s);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#DE8F73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+        </div>
+        <div class="card-badge badge-new"><span class="pulse"></span> New</div>
+      </div>
+      <div class="card-body">
+        <h2>Connect Notion to Claude AI with MCP</h2>
+        <p>The newest guide: link Notion directly into Claude using the Model Context Protocol, so the team can search, read and update pages straight from chat.</p>
+      </div>
+      <div class="card-tags">
+        <span class="tag">MCP</span>
+        <span class="tag">Notion</span>
+        <span class="tag">Claude</span>
+      </div>
+      <div class="card-footer">
+        <span>aci-edulink.github.io</span>
+        <span class="card-footer-action">
+          Read the guide
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <strong>ACI Edulink</strong> · Strategy &amp; Planning Dept.
+</footer>
+
+<a class="jump-cta" href="https://app.notion.com/p/c4470ef25a8c47f08aca569229f6c2b8?v=181a93e7b4a04b8c89f2a8be4aa8660b&source=copy_link" target="_blank" rel="noopener" aria-label="Sign up now for updates">
+  <span class="jc-dot"></span>
+  Sign Up Now
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</a>
+
+<script>
+  const htmlEl = document.documentElement;
+  const darkBtn = document.getElementById('theme-dark-btn');
+  const lightBtn = document.getElementById('theme-light-btn');
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      htmlEl.setAttribute('data-theme', 'light');
+      lightBtn.classList.add('active');
+      darkBtn.classList.remove('active');
+    } else {
+      htmlEl.setAttribute('data-theme', 'dark');
+      darkBtn.classList.add('active');
+      lightBtn.classList.remove('active');
+    }
+    try { localStorage.setItem('edulink-digest-theme', theme); } catch (e) {}
+  }
+
+  let savedTheme = 'dark';
+  try { savedTheme = localStorage.getItem('edulink-digest-theme') || 'dark'; } catch (e) {}
+  applyTheme(savedTheme);
+
+  darkBtn.addEventListener('click', () => applyTheme('dark'));
+  lightBtn.addEventListener('click', () => applyTheme('light'));
+</script>
+
+</body>
+</html>
+
+</body></html>
