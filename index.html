@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="ACI EduTech Crunch" />
 <meta property="og:title" content="ACI EduTech Crunch · Team Learning Digest" />
-<meta property="og:description" content="Trending AI & Tech Digests from ACI Edulink SPT Team" />
+<meta property="og:description" content="Live Notion and AI trainings for the ACI Edulink team, plus the new guide to connecting Notion with Claude AI via MCP." />
 <meta property="og:url" content="https://aci-edulink.github.io/AI-tech-articles/" />
 <meta property="og:image" content="https://aci-edulink.github.io/AI-tech-articles/preview.png" />
 <meta property="og:image:secure_url" content="https://aci-edulink.github.io/AI-tech-articles/preview.png" />
@@ -110,7 +110,7 @@
   .header-inner {
     max-width: 900px;
     margin: 0 auto;
-    height: 64px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -169,6 +169,45 @@
     margin: 0 auto;
     padding: 4.5rem 1.5rem 3rem;
     text-align: center;
+  }
+  .logo-name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .logo-name .logo-icon { width: 26px; height: 26px; border-radius: 8px; }
+  .logo-name .logo-icon svg { width: 14px; height: 14px; }
+  .logo-text .logo-author { padding-left: 35px; }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    line-height: 1.15;
+  }
+  .logo-author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .author-badge {
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    display: grid;
+    place-items: center;
+    font-size: 0.42rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .logo-author { font-size: 0.62rem; }
+    .header-inner { height: auto; padding-block: 10px; gap: 10px; }
   }
   .hero-eyebrow {
     font-size: 0.72rem;
@@ -432,12 +471,17 @@
 <header>
   <div class="header-inner">
     <a class="logo" href="#top">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/>
-        </svg>
-      </div>
-      ACI EduTech Crunch
+      <span class="logo-text">
+        <span class="logo-name">
+          <span class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/>
+            </svg>
+          </span>
+          ACI EduTech Crunch
+        </span>
+        <span class="logo-author"><span class="author-badge">ANC</span>Author: Strategy &amp; Planning Dept.</span>
+      </span>
     </a>
     <div class="theme-toggle" id="theme-toggle">
       <span class="theme-toggle-option" id="theme-dark-btn">
@@ -532,9 +576,6 @@
   </div>
 </section>
 
-<footer>
-  <strong>ACI Edulink</strong> · Strategy &amp; Planning Dept.
-</footer>
 
 <a class="jump-cta" href="https://app.notion.com/p/c4470ef25a8c47f08aca569229f6c2b8?v=181a93e7b4a04b8c89f2a8be4aa8660b&source=copy_link" target="_blank" rel="noopener" aria-label="Sign up now for updates">
   <span class="jc-dot"></span>
