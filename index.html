@@ -25,6 +25,10 @@
 <meta name="twitter:title" content="ACI EduTech Crunch · Team Learning Digest" />
 <meta name="twitter:description" content="Live Notion and AI trainings for the ACI Edulink team, plus the new guide to connecting Notion with Claude AI via MCP." />
 <meta name="twitter:image" content="https://aci-edulink.github.io/AI-tech-articles/preview.png" />
+<!-- WeChat reads schema.org itemprop tags (not og:) for its share card, plus the first large image in the page -->
+<meta itemprop="name" content="ACI EduTech Crunch · Team Learning Digest" />
+<meta itemprop="description" content="Live Notion and AI trainings for the ACI Edulink team, plus the new guide to connecting Notion with Claude AI via MCP." />
+<meta itemprop="image" content="https://aci-edulink.github.io/AI-tech-articles/preview.png" />
 <meta name="theme-color" content="#F5F8F6" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -219,9 +223,29 @@
   }
   .hero h1 em {
     font-style: italic;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    position: relative;
+    padding: 0 0.08em;
+    background: linear-gradient(90deg, #2F7E6F, var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  /* Marker-style highlight behind "your time" */
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.1em;
+    height: 0.38em;
+    background: linear-gradient(90deg, rgba(127,193,174,0.45), rgba(127,193,174,0.25));
+    border-radius: 0.2em;
+    z-index: -1;
+  }
+  html[data-theme="dark"] .hero h1 em {
+    background-image: linear-gradient(90deg, var(--accent2), var(--accent));
+  }
+  html[data-theme="dark"] .hero h1 em::after {
+    background: linear-gradient(90deg, rgba(95,187,169,0.32), rgba(95,187,169,0.16));
   }
   .hero p {
     color: var(--muted);
@@ -452,10 +476,52 @@
     .hero { padding: 2.75rem 1.25rem 2rem; }
     .section { padding: 0 1.25rem 4rem; }
     .jump-cta { right: 14px; bottom: 16px; padding: 11px 16px; font-size: 0.8rem; }
+
+    /* Header: title + toggle on one row, author line underneath at full width */
+    header { padding: 0 1rem; }
+    .header-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      column-gap: 8px;
+      row-gap: 8px;
+      padding-block: 12px;
+    }
+    .logo, .logo-text { display: contents; }
+    .logo-name { grid-column: 1; grid-row: 1; font-size: 0.98rem; white-space: nowrap; }
+    .theme-toggle { grid-column: 2; grid-row: 1; padding: 3px; gap: 3px; }
+    .logo-text .logo-author {
+      grid-column: 1 / -1; grid-row: 2;
+      padding-left: 35px;
+      font-size: 0.66rem;
+      white-space: nowrap;
+    }
+    .author-badge { width: 22px; height: 22px; font-size: 0.5rem; }
+    .theme-toggle-option { padding: 5px 8px; font-size: 0.68rem; gap: 4px; }
+    .theme-toggle-option svg { width: 12px; height: 12px; }
+
+    /* Keep "What's worth your time" on one line */
+    .hero h1 { font-size: clamp(1.3rem, 6.6vw, 2rem); }
+    .hero h1 .h1-line { white-space: nowrap; }
+    .hero h1 { line-height: 1.2; margin-bottom: 1rem; }
+    .hero p { font-size: clamp(0.84rem, 3.8vw, 1rem); line-height: 1.6; max-width: 34ch; }
+
+    /* Keep the section heading on one line */
+    .section-label { font-size: clamp(0.72rem, 3.6vw, 1.05rem); padding: 0.75rem 0.9rem; gap: 7px; white-space: nowrap; }
+    .section-label .spark svg { width: 16px; height: 16px; vertical-align: -3px; }
+  }
+  @media (max-width: 360px) {
+    .logo-name { font-size: 0.9rem; }
+    .theme-toggle-option { padding: 5px 7px; font-size: 0.64rem; }
   }
 </style>
 </head>
 <body>
+
+<!-- WeChat thumbnail fallback: older WeChat versions use the first image (300px+) in the body -->
+<div style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+  <img src="https://aci-edulink.github.io/AI-tech-articles/preview.png" alt="" width="1200" height="630" />
+</div>
 
 <!-- ── Header ── -->
 <header>
@@ -489,8 +555,8 @@
 <!-- ── Hero ── -->
 <section class="hero" id="top">
   <div class="hero-eyebrow">Team Learning Digest</div>
-  <h1>What's worth <em>your time</em><br />this month</h1>
-  <p>A running round-up of what's live for the team right now, from AI in action to Notion fundamentals and the newest ways to connect the two.</p>
+  <h1><span class="h1-line">What's worth <em>your time</em></span><br />this month</h1>
+  <p>A running round-up of what's live for the team right now, from AI in action to Notion fundamentals.</p>
 </section>
 
 <!-- ── Featured section ── -->
